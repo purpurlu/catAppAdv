@@ -1,0 +1,20 @@
+.signup {
+    background-color: burlywood;
+    text-align: center;
+    margin: 20px;
+    padding: 5px; 
+}
+
+.signup form {
+    background-color: red;
+    text-align: center;
+    margin: 20px;
+    padding: 5px; 
+}
+
+.signup input {
+    background-color: blueviolet;
+    text-align: center;
+    margin: 20px;
+    padding: 5px; 
+}
