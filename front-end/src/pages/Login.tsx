@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react"
-import { signUp } from "../helpers/utils"
+import { login } from "../helpers/utils"
 import { useNavigate } from "react-router-dom"
-import "./signUp.css"
+import "../components/signUp.css"
 import { AuthContext } from "../context/Context"
 
-export const SignUp = ():React.JSX.Element => {
-
+export const Login = ():React.JSX.Element => {
     const navigate = useNavigate()
+    const [errorMessage, setErrorMessage] = useState<string>("")
+
     const { isLoggedIn } = useContext(AuthContext)
 
     useEffect(() => {
@@ -15,8 +16,6 @@ export const SignUp = ():React.JSX.Element => {
         }
     }, [isLoggedIn])
 
-    const [errorMessage, setErrorMessage] = useState<string>("")
-
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const data = new FormData(e.currentTarget)
@@ -24,11 +23,12 @@ export const SignUp = ():React.JSX.Element => {
         const password = data.get('password')?.toString()
         console.log(data.get("username"))
 
-        const res = await signUp(username!, password!)
+        const res = await login(username!, password!)
         if (res.success) {
             setErrorMessage("")
+            // console.log(await checkAuth())
             // alert("Success!")
-            navigate("/login")
+            navigate("/")
         } else {
             setErrorMessage(res.errorMessage!)
         }
@@ -40,7 +40,7 @@ export const SignUp = ():React.JSX.Element => {
                 <input required type="text" name="username" placeholder="Username"/>
                 <input required type='password' name="password" placeholder="Password"/>
                 <input type="reset"/>
-                <button type="submit" > Signup</button>
+                <button type="submit" > Login </button>
             </form>
 
             {
