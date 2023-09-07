@@ -4,6 +4,7 @@ import { Home } from "./pages/Home"
 import { NavBar } from "./components/NavBar"
 import { Login } from "./pages/Login"
 import { AuthProvider } from "./context/Context"
+import { NotFound } from "./pages/NotFound"
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/" element={<Home/>}/>
+            <Route path="*" element={<NotFound/>}/>
           </Routes>
         </Router>
       </AuthProvider>

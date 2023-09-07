@@ -10,7 +10,7 @@ export const NavBar = (): React.JSX.Element => {
     return (
         <div className="navigation">
 		<Link to = "/" className="brand-name">
-			Main Page
+			<b> Cat App  </b>
 		</Link>
 		<div
 			className="navigation-menu">
@@ -20,16 +20,13 @@ export const NavBar = (): React.JSX.Element => {
 				!isLoggedIn ?  
 				<>
 					<li>
-						<Link to="/signup">SignUp</Link>
+						<Link to="/signup" className="mylink">SignUp</Link>
 					</li>
 					<li>
-						<Link to="/login">Login</Link>
+						<Link to="/login" className="mylink">Login</Link>
 					</li>
 				</> : 
 				<>
-					<li>
-						<Link to="/">Home</Link>
-					</li>
 					<li>
 						<Logout/>
 					</li>

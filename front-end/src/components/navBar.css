@@ -1,13 +1,14 @@
 .navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 60px;
   width: 100%;
-  display: flex;
-  align-items: center;
-  /* position: relative; */
   padding: 0.5rem 0rem;
-  background-color: #fff;
+  background-color: rgb(241, 232, 132);
   color: black;
   box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
+  border-radius: 10px;
 }
 
 .brand-name {
@@ -17,9 +18,31 @@
   margin-left: 1rem;
 }
 
+.navigation-menu {
+  margin-left: auto;
+
+}
+
+/* .brand-name {
+  justify-self: start;
+} */
+
+.navigation-menu ul {
+  list-style: none;
+  display: flex;
+
+}
+
 .navigation-menu li {
-  /* display: inline-flex; */
-  display: inline-block;
   margin: 10px;
-  
+}
+
+.mylink {
+  display: flex !important;
+  text-decoration: none;
+  border: 5px solid indianred;
+  border-radius: 10px;
+  padding: 5px;
+  width: 100px;
+  justify-content: center;
 }

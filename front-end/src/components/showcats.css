@@ -1,0 +1,29 @@
+.button {
+    text-align: center;
+    padding: 10px;
+    font-size: 25px;
+    border-radius: 5px;
+    border-color: blanchedalmond;
+    
+
+}
+
+.button:hover {
+    border-color: red;
+    width: 10%
+}
+
+
+
+.app {
+    
+    text-align: center;
+    padding: 20px;
+}
+
+.box {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}

@@ -1,5 +1,5 @@
 import { logout } from "../helpers/utils"
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 export const Logout = () => {
 
@@ -12,9 +12,6 @@ export const Logout = () => {
         }
     }
     return (
-
-        <div>
-            <button type="reset" onClick={handleLogout}> Logout </button>
-        </div>
+        <a href="#" onClick={handleLogout} className="mylink"> Logout </a>
     )
 }

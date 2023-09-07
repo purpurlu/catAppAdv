@@ -36,6 +36,7 @@ export const Login = ():React.JSX.Element => {
 
     return (
         <div className="signup">
+            <h1> Login Page </h1>
             <form onSubmit={handleSubmit}>
                 <input required type="text" name="username" placeholder="Username"/>
                 <input required type='password' name="password" placeholder="Password"/>

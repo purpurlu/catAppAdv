@@ -1,5 +1,5 @@
-import { API_URL } from "./constants"
-import { ServerResponse } from "./interfaces"
+import { API_URL ,  CAT_API_KEY, CAT_API_URL } from "./constants"
+import { ServerResponse, Cat } from "./interfaces"
 
 /**
  * function signUp sends the username and password to the db
@@ -94,4 +94,25 @@ export const logout = async (): Promise<ServerResponse> => {
             errorMessage: error.toString()
         }
     }
+}
+
+
+/**
+ * The function getCats gets cats from the cat API
+ * @returns {Cat[]}
+ */
+
+export const getCats = async (): Promise <Cat[]> => {
+    const response = await fetch (`${CAT_API_URL}?limit=4`, {
+        headers: {
+            "Authorization": CAT_API_KEY
+        }
+    })
+
+    if (response.status !== 200) {
+        return [] as Cat[]
+    }
+
+    const cats: Cat[] = await response.json()
+    return cats 
 }

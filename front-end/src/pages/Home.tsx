@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react"
 import { AuthContext } from "../context/Context"
 import { useNavigate } from "react-router-dom"
+import { ShowCats } from "../components/ShowCats"
 
 export const Home = ():React.JSX.Element => {
     const navigate = useNavigate()
@@ -19,9 +20,10 @@ export const Home = ():React.JSX.Element => {
     }, [navigate, isLoggedIn, checkUserLoggedIn])
 
     return (
-        <>
-            <h1> Main Page </h1>
-        </>
+        <div style={{textAlign:"center"}}>
+            <h1> Home Page </h1>
+            <ShowCats/>
+        </div>
     )
 }
 
