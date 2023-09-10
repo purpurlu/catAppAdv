@@ -1,3 +1,4 @@
+import { json } from "react-router-dom"
 import { API_URL ,  CAT_API_KEY, CAT_API_URL } from "./constants"
 import { ServerResponse, Cat } from "./interfaces"
 
@@ -115,4 +116,49 @@ export const getCats = async (): Promise <Cat[]> => {
 
     const cats: Cat[] = await response.json()
     return cats 
+}
+
+export const saveCats = async( catID: string, catURL: string):  Promise <ServerResponse> => {
+
+    try {
+        const response = await fetch(`${API_URL}/saveCat`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }, 
+            body: JSON.stringify({ catID, catURL }),
+            credentials: "include"
+        })
+        if (response.status === 200) {
+            return { success: true }
+        } else {
+            return {
+                success: false,
+                errorMessage: await response.json()
+            }
+        }
+    } catch (error: any) {
+        return {
+            success: false,
+            errorMessage: error.toString()
+        }
+    }
+}
+
+export const removeSavedCat = async(catID: string): Promise<ServerResponse> => {
+    try {
+        const res = await fetch(`${API_URL}/savedCats/${catID}`, {
+            method: "DELETE",
+            credentials: "include"
+        })
+    
+        if (res.status === 200) {
+            return {success:true}
+        } else {
+            return {success: false, errorMessage: await res.json()}
+        }
+    } catch (error: any) {
+        return {success: false, errorMessage: error}
+    }
+
 }

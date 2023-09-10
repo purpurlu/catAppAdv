@@ -25,7 +25,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({children}): React.JSX
     }, [])
 
     return (
-        <AuthContext.Provider value={{isLoggedIn, checkUserLoggedIn, setIsLoggedIn}}> 
+        <AuthContext.Provider value={{ isLoggedIn, checkUserLoggedIn, setIsLoggedIn }}> 
             {children} 
         </AuthContext.Provider>
     )

@@ -5,6 +5,7 @@ import { NavBar } from "./components/NavBar"
 import { Login } from "./pages/Login"
 import { AuthProvider } from "./context/Context"
 import { NotFound } from "./pages/NotFound"
+import { LikedCatsProvider } from "./context/LikedCatContext"
 
 
 function App() {
@@ -12,15 +13,17 @@ function App() {
   return (
     <>
       <AuthProvider> 
-        <Router>
-          <NavBar/>
-          <Routes>
-            <Route path="/signup" element={<SignUp/>}/>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/" element={<Home/>}/>
-            <Route path="*" element={<NotFound/>}/>
-          </Routes>
-        </Router>
+        <LikedCatsProvider>
+          <Router>
+            <NavBar/>
+            <Routes>
+              <Route path="/signup" element={<SignUp/>}/>
+              <Route path="/login" element={<Login/>}/>
+              <Route path="/" element={<Home/>}/>
+              <Route path="*" element={<NotFound/>}/>
+            </Routes>
+          </Router>
+        </LikedCatsProvider>
       </AuthProvider>
       
     </>

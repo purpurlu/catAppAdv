@@ -14,6 +14,11 @@ export interface AuthContextInterface {
 
 }
 
+export interface LikedCatsContextInteface {
+    likedCats: Cat[],
+    getLikedCats: () => Promise<void>
+}
+
 /**
  * @interface Cat 
  * @description Cat interface
@@ -26,11 +31,16 @@ export interface AuthContextInterface {
 export interface Cat {
     id: string,
     url: string,
-    width: number,
-    height: number,
-    breeds: any[]
+    width?: number,
+    height?: number,
+    breeds?: any[],
+    liked?: boolean
 }
 
 export interface CatProps {
     cat: Cat
+}
+
+export interface CatsProps {
+    cats: Cat[]
 }
