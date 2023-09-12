@@ -3,6 +3,8 @@ import { login } from "../helpers/utils"
 import { useNavigate } from "react-router-dom"
 import "../components/signUp.css"
 import { AuthContext } from "../context/Context"
+import { Button, ButtonGroup, Input, Box, Text, FormControl, FormErrorMessage } from '@chakra-ui/react'
+
 
 export const Login = ():React.JSX.Element => {
     const navigate = useNavigate()
@@ -35,20 +37,27 @@ export const Login = ():React.JSX.Element => {
     }
 
     return (
-        <div className="signup">
-            <h1> Login Page </h1>
-            <form onSubmit={handleSubmit}>
-                <input required type="text" name="username" placeholder="Username"/>
-                <input required type='password' name="password" placeholder="Password"/>
-                <input type="reset"/>
-                <button type="submit" > Login </button>
-            </form>
+        <Box w="100%" className="signup">
+            <Text fontSize={"large"} fontWeight={"bold"}> Login Page </Text>
+            <Box margin={"auto"} w='50%' maxW='50%' p={4} color='white'>
+                <form onSubmit={handleSubmit}>
+                    <FormControl isInvalid={errorMessage ? true : false}>
+                        <Input required type="text" name="username" placeholder="Username" size='sm'/>
+                        <Input required type='password' name="password" placeholder="Password" size='sm'/>
+                        <ButtonGroup>
+                            <Button type="reset"> Reset </Button>
+                            <Button type="submit" > Login </Button>
+                        </ButtonGroup>
+                        {
+                            errorMessage && 
+                            <FormErrorMessage color="black"> { errorMessage } </FormErrorMessage>
+                        }
+                    </FormControl>
 
-            {
-                errorMessage && 
-                <p> { errorMessage } </p>
-            }
+                </form>
 
-        </div>
+            </Box>
+
+        </Box>
     )
 }

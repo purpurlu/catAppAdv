@@ -1,4 +1,3 @@
-import { json } from "react-router-dom"
 import { API_URL ,  CAT_API_KEY, CAT_API_URL } from "./constants"
 import { ServerResponse, Cat } from "./interfaces"
 
@@ -67,10 +66,10 @@ export const login = async (username: string, password: string): Promise <Server
             return { success:false, errorMessage: await response.json() }
         }
     } catch (error: any) {
-        console.log(error)
+        // console.log(error)
         return {
             success: false,
-            errorMessage: error.toString()
+            errorMessage: "Credentials are invalid"
         }
     }
 

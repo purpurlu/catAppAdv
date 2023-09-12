@@ -3,6 +3,7 @@ import { CatProps } from "../helpers/interfaces"
 import { removeSavedCat, saveCats } from "../helpers/utils"
 import "./catCard.css"
 import { LikedCatsContext } from "../context/LikedCatContext"
+import { Box, Image } from '@chakra-ui/react'
 
 export const CatCard = (props: CatProps): React.JSX.Element => {
 
@@ -32,8 +33,13 @@ export const CatCard = (props: CatProps): React.JSX.Element => {
     }
 
     return (
-        <div className="catCard">
-            <img src={props.cat.url} 
+        <Box maxW='sm'    width={[
+      "100%", // 0-30em
+      "50%", // 30em-48em
+    //   "25%", // 48em-62em
+      "23%", // 62em+
+    ]} borderWidth={['1px', ]} borderRadius='xl' overflow='hidden' className="catCard">
+            <Image src={props.cat.url} 
             width={props.cat.width} 
             height={props.cat.height}
             />
@@ -44,6 +50,6 @@ export const CatCard = (props: CatProps): React.JSX.Element => {
                     <button className="cutie" onClick={handleCutieCat}> Cutie </button>
             }
 
-        </div>
+        </Box>
     )
 }
