@@ -5,6 +5,7 @@ import { ShowCats } from "../components/ShowCats"
 import { Cat } from "../helpers/interfaces"
 import { getCats } from "../helpers/utils"
 import { LikedCatsContext } from "../context/LikedCatContext"
+import { Button, Text, Box } from '@chakra-ui/react'
 
 export const Home = ():React.JSX.Element => {
     const navigate = useNavigate()
@@ -36,11 +37,24 @@ export const Home = ():React.JSX.Element => {
 
     return (
         <div style={{textAlign:"center"}}>
-            <h1> Home Page </h1>
-            <h2> Your liked cats </h2>
+            <Text
+                bgGradient="linear(to-r, gray.300, yellow.400, pink.200)"
+                bgClip="text"
+                fontSize="2xl"
+                fontWeight="extrabold"> 
+            Home Page 
+            </Text>
+            <Text 
+                textColor={"red"}
+                fontSize={"xl"}
+                fontWeight={"semibold"}
+            > Your liked cats </Text>
             <ShowCats cats={likedCats} />
-            <button onClick={handleCatImages} className="button"> Show more cats </button>
-            <ShowCats cats={cats} />
+            <Box p="4">
+                <Button onClick={handleCatImages} className="button"> Show more cats </Button>
+                <ShowCats cats={cats} />
+            </Box>
+            
         </div>
     )
 }

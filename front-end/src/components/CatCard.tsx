@@ -3,7 +3,10 @@ import { CatProps } from "../helpers/interfaces"
 import { removeSavedCat, saveCats } from "../helpers/utils"
 import "./catCard.css"
 import { LikedCatsContext } from "../context/LikedCatContext"
-import { Box, Image } from '@chakra-ui/react'
+import { Box, Image, Button } from '@chakra-ui/react'
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 
 export const CatCard = (props: CatProps): React.JSX.Element => {
 
@@ -13,9 +16,16 @@ export const CatCard = (props: CatProps): React.JSX.Element => {
         const saveCatResult = await saveCats(props.cat.id, props.cat.url)
         if (saveCatResult.success) {
             await getLikedCats()
-            alert("Saved the cat")
+            toast.success("Saved the cat", {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 1500
+              })
+            // alert("Saved the cat")
         } else {
-            alert(saveCatResult.errorMessage)
+            toast.warn(saveCatResult.errorMessage, {
+                position: toast.POSITION.BOTTOM_LEFT
+              });
+            // alert(saveCatResult.errorMessage)
         }
     }
 
@@ -23,33 +33,40 @@ export const CatCard = (props: CatProps): React.JSX.Element => {
         const removeCatResult = await removeSavedCat(props.cat.id) 
         if (removeCatResult.success) {
             await getLikedCats()
-            alert("The cat is patootie!")
+            // alert("The cat is patootie!")
+            toast.success("The cat is patootie!", {
+                position: toast.POSITION.TOP_CENTER
+              })
         } else {
-            alert(removeCatResult.errorMessage)
+            // alert(removeCatResult.errorMessage)
+            toast.warn(removeCatResult.errorMessage, {
+                position: toast.POSITION.BOTTOM_LEFT
+            });
+
         }
-
-
-        
     }
 
     return (
-        <Box maxW='sm'    width={[
-      "100%", // 0-30em
-      "50%", // 30em-48em
-    //   "25%", // 48em-62em
-      "23%", // 62em+
-    ]} borderWidth={['1px', ]} borderRadius='xl' overflow='hidden' className="catCard">
+        <Box maxW='sm'    
+            width={[
+            "100%",
+            "50%",
+            "23%", 
+            ]} 
+            borderWidth={['3px']} 
+            borderRadius='2xl' 
+            overflow='hidden' 
+            className="catCard">
             <Image src={props.cat.url} 
             width={props.cat.width} 
             height={props.cat.height}
             />
             {props.cat.liked ?
-                    <button className="patootie" onClick={handlePatootieCat}> Patootie </button>
-
+                <Button backgroundColor={"greenyellow"} onClick={handlePatootieCat}> Patootie </Button>
                 :
-                    <button className="cutie" onClick={handleCutieCat}> Cutie </button>
+                <Button backgroundColor={"pink.300"} onClick={handleCutieCat}> Cutie </Button>
             }
-
+            <ToastContainer />
         </Box>
     )
 }
